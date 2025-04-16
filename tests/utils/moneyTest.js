@@ -9,4 +9,10 @@ describe('test suite:format currency',()=>{
   it('rounds up to the nearst cent',()=>{
     expect(formatCurrency(2045.5)).toEqual('20.46');
   });
+  it('rounds down to nearst cent',()=>{
+    expect(formatCurrency(2000.4)).toEqual('20.00');
+  });
+  it('checks negative number',()=>{
+    expect(formatCurrency(-200)).toEqual('-2.00');
+  });
 });
