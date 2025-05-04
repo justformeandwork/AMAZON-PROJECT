@@ -8,7 +8,7 @@ export function getProduct(productId){
       });
   return matchingProduct;
 }
-class Product{
+export class Product{
   id;
   image;
   name;
@@ -31,7 +31,7 @@ class Product{
     return '';
   }
 }
-class Clothing extends  Product{
+export class Clothing extends  Product{
   sizeChartLink;
   constructor(productDetails){
     super(productDetails);
@@ -42,6 +42,25 @@ class Clothing extends  Product{
     <a href="../images/clothing-size-chart.png" target="_blank">
     size chart
     </a>
+    `;
+  }
+}
+export class Appliance extends Product{
+  instructionsLink;
+  warrantyLink;
+  constructor(details){
+    super(details);
+    this.instructionsLink=details.instructionsLink;
+    this.warrantyLink=details.warrantyLink;
+  }
+  getinfoHTML() {
+    return `
+      <a href="${this.instructionsLink}" target="_blank">
+        Instructions
+      </a>
+      <a href="${this.warrantyLink}" target="_blank">
+        Warranty
+      </a>
     `;
   }
 }
@@ -105,7 +124,10 @@ export const products = [
       "toaster",
       "kitchen",
       "appliances"
-    ]
+    ],
+    type:"appliance",
+    instructionsLink:"images/appliance-instructions.png",
+    warrantyLink:"images/appliance-warranty.png"
   },
   {
     id: "3ebe75dc-64d2-4137-8860-1f5a963e534b",
@@ -290,7 +312,10 @@ export const products = [
       "water boiler",
       "appliances",
       "kitchen"
-    ]
+    ],
+    type:"appliance",
+    instructionsLink:"images/appliance-instructions.png",
+    warrantyLink:"images/appliance-warranty.png"
   },
   {
     id: "6b07d4e7-f540-454e-8a1e-363f25dbae7d",
@@ -707,5 +732,7 @@ export const products = [
 ].map((productDetails)=>{
   if(productDetails.type==='clothing')
     return new Clothing(productDetails);
+  if(productDetails.type==='appliance')
+    return new Appliance(productDetails);
   return new Product(productDetails);
 });
