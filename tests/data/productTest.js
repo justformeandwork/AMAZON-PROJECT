@@ -2,7 +2,6 @@ import {Product, Clothing, Appliance} from '../../data/products.js';
 /*contains fail testcases due to syntax error*/
 describe('test suite: Product', () => {
   let product;
-
   beforeEach(() => {
     product = new Product({
       id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -43,7 +42,7 @@ describe('test suite: Product', () => {
   });
 
   it('does not display any extra info', () => {
-    expect(product.getInfoHTML()).toEqual('');
+    expect(product.getinfoHTML()).toEqual('');
   });
 });
 
@@ -89,12 +88,12 @@ describe('test suite: Clothing', () => {
   it('displays a size chart link in extraInfoHTML', () => {
     // It's hard to match a multiline string exactly, so we'll
     // just check if the result contains certain strings.
-    expect(clothing.getInfoHTML()).toContain(
-      `<a href="images/clothing-size-chart.png" target="_blank">`
+    expect(clothing.getinfoHTML()).toContain(
+      `<a href="../images/clothing-size-chart.png" target="_blank">`
     );
 
     // Check the text of the link is correct.
-    expect(clothing.getInfoHTML()).toContain('Size chart');
+    expect(clothing.getinfoHTML()).toContain('size chart');
   });
 });
 
@@ -139,14 +138,14 @@ describe('test suite: Appliance', () => {
   });
 
   it('displays instructions and warranty in extraInfoHTML', () => {
-    expect(appliance.getInfoHTML()).toContain(
+    expect(appliance.getinfoHTML()).toContain(
       `<a href="images/appliance-instructions.png" target="_blank">`
     );
-    expect(appliance.getInfoHTML()).toContain('Instructions');
+    expect(appliance.getinfoHTML()).toContain('Instructions');
 
-    expect(appliance.getInfoHTML()).toContain(
+    expect(appliance.getinfoHTML()).toContain(
       `<a href="images/appliance-warranty.png" target="_blank">`
     );
-    expect(appliance.getInfoHTML()).toContain('Warranty');
+    expect(appliance.getinfoHTML()).toContain('Warranty');
   });
 });
