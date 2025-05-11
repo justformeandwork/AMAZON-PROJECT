@@ -6,18 +6,22 @@ import { renderPaymentSummary } from './checkout/paymentSummary.js';
 //import '../data/BACKEND-PRATICE.js';
 //import '../data/car.js';
 async function loadPage(){
-  await loadProductsFetch();
-  await new Promise((resolve)=>{
-    loadCart(()=>{
-      resolve();
+  try{
+    //throw 'error';
+    await loadProductsFetch();
+    await new Promise((resolve,reject)=>{
+      loadCart(()=>{
+        //reject('error');
+        resolve();
+      });
     });
-  });
-  renderOrderSummary();
-  renderPaymentSummary();
+    renderOrderSummary();
+    renderPaymentSummary();
+  }catch(error){
+    console.log('Unexpected error. Please try again later.');
+  }
 }
-loadPage().then(()=>{
-  console.log('page loaded');
-});
+loadPage();
 /*
 Promise.all([
   loadProductsFetch(),
