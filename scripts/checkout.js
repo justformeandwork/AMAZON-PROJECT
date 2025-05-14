@@ -1,4 +1,4 @@
-import { loadCart } from '../data/cart.js';
+import { loadCart,loadCartFetch } from '../data/cart.js';
 import { loadProducts, loadProductsFetch } from '../data/products.js';
 import { renderOrderSummary } from './checkout/orderSummary.js';
 import { renderPaymentSummary } from './checkout/paymentSummary.js';
@@ -8,13 +8,12 @@ import { renderPaymentSummary } from './checkout/paymentSummary.js';
 async function loadPage(){
   try{
     //throw 'error';
-    await loadProductsFetch();
-    await new Promise((resolve,reject)=>{
-      loadCart(()=>{
-        //reject('error');
-        resolve();
-      });
-    });
+    //await loadProductsFetch();
+    //await loadCartFetch();
+    await Promise.all([
+      loadCartFetch(),
+      loadProductsFetch()
+    ]);
     renderOrderSummary();
     renderPaymentSummary();
   }catch(error){

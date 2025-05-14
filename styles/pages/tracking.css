@@ -79,3 +79,15 @@
   border-radius: 50px;
   width: 50%;
 }
+.view-all-orders{
+  width: 150px;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  color:white;
+  background-color: rgb(54, 61, 61);
+  font-family: arial;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}

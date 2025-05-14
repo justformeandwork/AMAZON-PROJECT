@@ -83,6 +83,24 @@ export function renderOrderSummary(){
     });
     return html;
   }
+  if(cart.length<=0){
+    document.querySelector('.js-order-summary').innerHTML=`
+  <div>
+  Your cart is empty.
+  </div>
+  <div>
+  <button class="view-products">View products</button>
+  <button class="view-orders">View orders</button>
+  </div>
+  `;
+  document.querySelector('.view-products').addEventListener('click',()=>{
+    window.location.href='amazon.html';
+  });
+  document.querySelector('.view-orders').addEventListener('click',()=>{
+    window.location.href='orders.html';
+  });
+  }
+  else{
   document.querySelector('.js-order-summary').innerHTML=cartSummaryHTML;
   document.querySelectorAll('.js-delete-link').forEach((link)=>{
     link.addEventListener('click',()=>{
@@ -124,4 +142,5 @@ export function renderOrderSummary(){
       renderPaymentSummary();
     });
   });
+}
 }
