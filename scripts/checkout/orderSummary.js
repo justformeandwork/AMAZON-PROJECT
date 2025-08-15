@@ -94,7 +94,7 @@ export function renderOrderSummary(){
   </div>
   `;
   document.querySelector('.view-products').addEventListener('click',()=>{
-    window.location.href='amazon.html';
+    window.location.href='index.html';
   });
   document.querySelector('.view-orders').addEventListener('click',()=>{
     window.location.href='orders.html';
